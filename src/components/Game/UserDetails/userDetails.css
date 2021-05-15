@@ -1,0 +1,78 @@
+.user-details {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  color: white;
+}
+
+.user-active{
+    transform: translateY(-100%);
+    transition: all 0.5s ease-in-out;
+}
+
+.user-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.user-section-header {
+  width: 60%;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.user-section-header h1 {
+  font-size: 3.5rem;
+}
+.user-section-header h2 {
+  font-size: 2.5rem;
+}
+
+.user-details-form {
+  width: 60%;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.user-details-form h2 {
+  font-size: 1.5rem;
+}
+
+.user-details-form h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ccf812;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 15rem;
+  width: 100%;
+  align-items: center;
+}
+
+.details input {
+  width: 70%;
+  padding: 0.5rem;
+}
+
+.details button {
+  padding: 1rem 1.5rem;
+  width: 40%;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 1.5rem;
+  cursor: pointer;
+}

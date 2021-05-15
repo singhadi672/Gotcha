@@ -1,17 +1,11 @@
 import React,{useState} from 'react';
 import Intro from './Intro/Intro';
 import HomeCards from './HomeCards/HomeCards';
+import { useHome } from '../../contexts/home-context';
 
 function Home(){
 
-    const [animate,setAnimate] = useState(true);
-    const [display,setDisplay] = useState(false);
-    
-    function changeDisplay(){
-        setTimeout(() => {
-             setDisplay(false);
-        }, 500);
-    }
+    const {display,animate,setAnimate,changeDisplay} = useHome();
 
     return(
         <>

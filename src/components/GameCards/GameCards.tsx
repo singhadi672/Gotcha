@@ -30,9 +30,9 @@ function GameCards(){
                     </h3>
                 </section>
                 <section className="game-play-option">
-                    <button style={{background:card.accentSecondary}} onClick={()=>history.push({pathname:`/${params.id}/game`,state:card,})}>Play Alone</button>
+                    <button style={{background:card.accentSecondary}} onClick={()=>history.push({pathname:`/${params.id}/game-singleplayer`,state:card,})}>Play Alone</button>
                     <h1>OR</h1>
-                    <button style={{background:card.accentSecondary}}>Play with Friends!</button>
+                    <button style={{background:card.accentSecondary}} onClick={()=>history.push({pathname:`/${params.id}/game-multiplayer`,state:card,})}>Play with Friends!</button>
                 </section>
             </div>
         </div>

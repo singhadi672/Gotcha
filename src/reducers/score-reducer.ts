@@ -1,4 +1,4 @@
-import { ACTION, InitialReducer } from "../components/Game/PlayArea/PlayArea";
+import { ACTION, InitialReducer } from "../components/Game/SinglePlayer/PlayArea/PlayArea";
 
 export function scoreReducer(state:InitialReducer,action:ACTION){
     switch(action.type){

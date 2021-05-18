@@ -2,9 +2,9 @@ import {useLocation} from 'react-router-dom';
 import UserDetails from './UserDetails/UserDetails';
 import PlayArea from './PlayArea/PlayArea';
 import Scoreboard from './Scoreboard/Scoreboard';
-import { useGame } from '../../contexts/game-context';
+import { useGame } from '../../../contexts/game-context';
 
-function Game(){
+function GameSinglePlayer(){
 
     let game:any = useLocation().state;
     const {accentPrimary,accentSecondary,cardName} = game;
@@ -30,4 +30,4 @@ function Game(){
     )
 }
 
-export default Game;
+export default GameSinglePlayer;

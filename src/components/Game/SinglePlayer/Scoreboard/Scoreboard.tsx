@@ -1,4 +1,4 @@
-import { useGame } from '../../../contexts/game-context';
+import { useGame } from '../../../../contexts/game-context';
 import {useHistory, useLocation} from 'react-router-dom';
 import './scoreboard.css';
 

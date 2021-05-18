@@ -1,6 +1,6 @@
 import { createContext, useContext,useState,useReducer } from 'react';
 import { scoreReducer } from '../reducers/score-reducer';
-import {InitialReducer} from '../components/Game/PlayArea/PlayArea';
+import {InitialReducer} from '../components/Game/SinglePlayer/PlayArea/PlayArea';
 
 
 export const GameContext = createContext<any>({});

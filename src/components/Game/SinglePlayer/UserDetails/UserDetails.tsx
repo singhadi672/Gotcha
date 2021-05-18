@@ -1,6 +1,5 @@
 import { useRef } from 'react';
-import { transform } from 'typescript';
-import { useGame } from '../../../contexts/game-context';
+import { useGame } from '../../../../contexts/game-context';
 import './userDetails.css';
 
 export type UserDetailsProp = {

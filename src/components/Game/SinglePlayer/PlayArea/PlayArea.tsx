@@ -1,9 +1,9 @@
 import React, { useReducer, useState } from 'react';
 import './playArea.css';
 import {useParams,useHistory} from 'react-router-dom';
-import {QuizData} from '../../../data/quiz';
-import { Option, Question } from '../../../data/quiz.type';
-import { useGame } from '../../../contexts/game-context';
+import {QuizData} from '../../../../data/quiz';
+import { Option, Question } from '../../../../data/quiz.type';
+import { useGame } from '../../../../contexts/game-context';
 
 
 export type PlayAreaProp = {

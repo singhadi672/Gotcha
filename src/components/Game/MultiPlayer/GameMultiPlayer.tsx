@@ -19,7 +19,10 @@ export default function GameMultiPlayer() {
   });
 
   return leaderBoard.status ? (
-    <LeaderBoard />
+    <LeaderBoard
+      accentSecondary={accentSecondary}
+      accentPrimary={accentPrimary}
+    />
   ) : waitingRoom.multiplayerGameArea ? (
     <MultiplayGamePlay
       accentSecondary={accentSecondary}

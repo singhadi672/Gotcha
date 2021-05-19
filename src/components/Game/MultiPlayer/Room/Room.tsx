@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { GameData } from "../../../../data/cardDetails";
 
 import { v4 as uuidv4 } from "uuid";
@@ -10,7 +10,9 @@ export default function Room({ accentPrimary, accentSecondary }: any) {
   const createRoomInputRef = useRef(null);
   const roomIdInputRef = useRef(null);
   const joinRoomInputRef = useRef(null);
-  const { setWaitingRoom, waitingRoom, socket } = useMultiplayer();
+  const [roomSizeInput, setRoomSizeInput] = useState(null);
+  const { setWaitingRoom, waitingRoom, socket, participants } =
+    useMultiplayer();
 
   function createRoom(e) {
     e.preventDefault();
@@ -18,13 +20,17 @@ export default function Room({ accentPrimary, accentSecondary }: any) {
     const participant = {
       roomId,
       username: createRoomInputRef.current.value,
+      roomSize: roomSizeInput,
       userId: socket.id,
       roomCreator: true,
       totalScore: 0,
       isAnswered: false,
     };
-    socket.emit("create_room", participant);
-    setWaitingRoom({ ...waitingRoom, waiting: true });
+    console.log(roomSizeInput);
+    if (createRoomInputRef.current.value && roomSizeInput) {
+      socket.emit("create_room", participant);
+      setWaitingRoom({ ...waitingRoom, waiting: true });
+    }
   }
 
   function joinRoom(e) {
@@ -37,8 +43,10 @@ export default function Room({ accentPrimary, accentSecondary }: any) {
       totalScore: 0,
       isAnswered: false,
     };
-    socket.emit("join_room", participant);
-    setWaitingRoom({ ...waitingRoom, waiting: true });
+    if (joinRoomInputRef.current.value && roomIdInputRef.current.value) {
+      socket.emit("join_room", participant);
+      setWaitingRoom({ ...waitingRoom, waiting: true });
+    }
   }
 
   return (
@@ -65,11 +73,21 @@ export default function Room({ accentPrimary, accentSecondary }: any) {
               <h3>Please select Room Size</h3>
               <div className="room-length">
                 <div className="radio-sec">
-                  <input type="radio" name="room" id="two" />
+                  <input
+                    type="radio"
+                    name="room"
+                    id="two"
+                    onClick={() => setRoomSizeInput(2)}
+                  />
                   <label htmlFor="two">2</label>
                 </div>
                 <div className="radio-sec">
-                  <input type="radio" name="room" id="three" />
+                  <input
+                    type="radio"
+                    name="room"
+                    id="three"
+                    onClick={() => setRoomSizeInput(3)}
+                  />
                   <label htmlFor="three">3</label>
                 </div>
               </div>
@@ -107,7 +125,9 @@ export default function Room({ accentPrimary, accentSecondary }: any) {
               />
             </div>
             <button
-              style={{ background: accentSecondary }}
+              style={{
+                background: accentSecondary,
+              }}
               onClick={(e) => joinRoom(e)}
             >
               Join Room

@@ -56,7 +56,7 @@ export default function MultiplayGamePlay({
   });
 
   socket.on("change view to leaderBoard", (data) => {
-      setLeaderBoard({status:true,leaderBoardData:data});
+    setLeaderBoard({ status: true, leaderBoardData: data });
   });
 
   function optionsHandler(option: Option) {
@@ -95,18 +95,28 @@ export default function MultiplayGamePlay({
           <div className="option option-top">
             <button
               style={{
-                background: accentSecondary,
+                background: buttonEnable
+                  ? accentSecondary
+                  : currentQuestion.options[0].isCorrect
+                  ? "green"
+                  : "tomato",
                 cursor: buttonEnable ? "pointer" : "not-allowed",
               }}
+              disabled={!buttonEnable}
               onClick={() => optionsHandler(currentQuestion.options[0])}
             >
               {currentQuestion.options[0].value}
             </button>
             <button
               style={{
-                background: accentSecondary,
+                background: buttonEnable
+                  ? accentSecondary
+                  : currentQuestion.options[1].isCorrect
+                  ? "green"
+                  : "tomato",
                 cursor: buttonEnable ? "pointer" : "not-allowed",
               }}
+              disabled={!buttonEnable}
               onClick={() => optionsHandler(currentQuestion.options[1])}
             >
               {currentQuestion.options[1].value}
@@ -115,18 +125,28 @@ export default function MultiplayGamePlay({
           <div className="option option-bottom">
             <button
               style={{
-                background: accentSecondary,
+                background: buttonEnable
+                  ? accentSecondary
+                  : currentQuestion.options[2].isCorrect
+                  ? "green"
+                  : "tomato",
                 cursor: buttonEnable ? "pointer" : "not-allowed",
               }}
+              disabled={!buttonEnable}
               onClick={() => optionsHandler(currentQuestion.options[2])}
             >
               {currentQuestion.options[2].value}
             </button>
             <button
               style={{
-                background: accentSecondary,
+                background: buttonEnable
+                  ? accentSecondary
+                  : currentQuestion.options[3].isCorrect
+                  ? "green"
+                  : "tomato",
                 cursor: buttonEnable ? "pointer" : "not-allowed",
               }}
+              disabled={!buttonEnable}
               onClick={() => optionsHandler(currentQuestion.options[3])}
             >
               {currentQuestion.options[3].value}

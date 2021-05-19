@@ -9,6 +9,7 @@ export function MultiplayerProvider({ children }) {
     waiting: false,
     multiplayerGameArea: false,
   });
+  const [roomSizeMultiplayer,setRoomSizeMultiplayer] = useState();
   const [participants, setParticipants] = useState([]);
   const [leaderBoard, setLeaderBoard] = useState({
     status: false,
@@ -25,6 +26,8 @@ export function MultiplayerProvider({ children }) {
         socket,
         leaderBoard,
         setLeaderBoard,
+        roomSizeMultiplayer,
+        setRoomSizeMultiplayer,
       }}
     >
       {children}

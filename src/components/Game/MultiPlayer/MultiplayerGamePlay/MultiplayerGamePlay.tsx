@@ -30,6 +30,7 @@ export default function MultiplayGamePlay({
     participants
   );
   const [buttonEnable, setButtonEnable] = useState(true);
+  const [timer, setTimer] = useState(6);
 
   function findQuizDataById() {
     return QuizData.quiz.find((item) => item.gameId === parseInt(id));
@@ -74,6 +75,17 @@ export default function MultiplayGamePlay({
     setButtonEnable(false);
   }
 
+  useEffect(() => {
+    const timerID = setInterval(() => {
+      setTimer((time) => time - 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(timerID);
+      setTimer(6);
+    };
+  }, [currentQuestion]);
+
   return (
     <div className="play-area">
       <h1 className="game-title" style={{ background: accentPrimary }}>
@@ -81,6 +93,7 @@ export default function MultiplayGamePlay({
       </h1>
       <section className="game-play">
         <div className="question">
+          <h4>0:0{timer}</h4>
           {gameType === "question" ? (
             <h3>
               Q{currentQuestion.questionNum}: {currentQuestion.question}

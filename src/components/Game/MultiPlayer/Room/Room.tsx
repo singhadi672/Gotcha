@@ -153,6 +153,9 @@ export default function Room({ accentPrimary, accentSecondary }: any) {
           </form>
         </section>
       </div>
+      <button onClick={() => socket.emit("delete_room")} style={{background:'tomato',marginTop:'1rem'}}>
+        Delete exsisting room
+      </button>
     </div>
   );
 }

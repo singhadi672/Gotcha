@@ -95,11 +95,7 @@ export default function MultiplayGamePlay({
           <div className="option option-top">
             <button
               style={{
-                background: buttonEnable
-                  ? accentSecondary
-                  : currentQuestion.options[0].isCorrect
-                  ? "green"
-                  : "tomato",
+                background: buttonEnable ? accentSecondary : "grey",
                 cursor: buttonEnable ? "pointer" : "not-allowed",
               }}
               disabled={!buttonEnable}
@@ -109,11 +105,7 @@ export default function MultiplayGamePlay({
             </button>
             <button
               style={{
-                background: buttonEnable
-                  ? accentSecondary
-                  : currentQuestion.options[1].isCorrect
-                  ? "green"
-                  : "tomato",
+                background: buttonEnable ? accentSecondary : "grey",
                 cursor: buttonEnable ? "pointer" : "not-allowed",
               }}
               disabled={!buttonEnable}
@@ -125,11 +117,7 @@ export default function MultiplayGamePlay({
           <div className="option option-bottom">
             <button
               style={{
-                background: buttonEnable
-                  ? accentSecondary
-                  : currentQuestion.options[2].isCorrect
-                  ? "green"
-                  : "tomato",
+                background: buttonEnable ? accentSecondary : "grey",
                 cursor: buttonEnable ? "pointer" : "not-allowed",
               }}
               disabled={!buttonEnable}
@@ -139,11 +127,7 @@ export default function MultiplayGamePlay({
             </button>
             <button
               style={{
-                background: buttonEnable
-                  ? accentSecondary
-                  : currentQuestion.options[3].isCorrect
-                  ? "green"
-                  : "tomato",
+                background: buttonEnable ? accentSecondary : "grey",
                 cursor: buttonEnable ? "pointer" : "not-allowed",
               }}
               disabled={!buttonEnable}

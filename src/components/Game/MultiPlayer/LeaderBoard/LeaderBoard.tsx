@@ -24,7 +24,6 @@ export function LeaderBoard({ accentPrimary, accentSecondary }: any) {
       >
         <section
           className="score-board"
-          style={{ borderRight: `0.2rem solid ${accentSecondary}` }}
         >
           <h1>Congrats! you guys finished the quiz</h1>
           <h3>Here are The Scores:</h3>

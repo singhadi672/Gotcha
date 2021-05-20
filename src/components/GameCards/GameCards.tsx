@@ -18,7 +18,7 @@ function GameCards(){
     return (
         <div className="game-detail-main">
             <div className="game-detail" style={{background:card.accentPrimary}}>
-                <section className="game-desc" style={{borderRight:`0.2rem solid ${card.accentSecondary}`}}>
+                <section className="game-desc">
                     <h1 className="game-desc-header">
                         {card.cardName}
                     </h1>

@@ -93,3 +93,45 @@
   transform: translateX(100%);
   transition: all 0.5s ease;
 }
+
+@media screen and (max-width:1213px) {
+  .home{
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .home-section{
+    width: 100%;
+  }
+
+  .home-left,.home-left-active{
+    height: 30%;
+  }
+
+  .home-right,.home-right-active{
+    height: 70%;
+  }
+
+  .header-logo{
+    font-size: 3rem;
+    
+  }
+
+  .header-desc{
+    font-size: 1rem;
+  }
+
+  .game-description{
+    width: 100%;
+  }
+
+  .description h1{
+    font-size: 2.2rem;
+  }
+
+  .description p{
+    width: 90%;
+  }
+
+  
+}

@@ -52,10 +52,7 @@ export default function Room({ accentPrimary, accentSecondary }: any) {
   return (
     <div className="room-main">
       <div className="room-card" style={{ background: accentPrimary }}>
-        <section
-          className="card card-left"
-          style={{ borderRight: `0.2rem solid ${accentSecondary}` }}
-        >
+        <section className="card card-left">
           <h1>Create Room</h1>
           <form action="">
             <div className="username">

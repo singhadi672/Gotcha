@@ -24,7 +24,7 @@ export const GameData:CardDetailData = {
         {
             cardId:2,
             cardName:"That's What She Said!",
-            cardDescription:"Who Haven't Watched 'The Office'? Presenting you 'The Office Trivia' where you will answer what exactly the Characters said in the picture shown to you!!.. The Game consists of 1 Round containing 10 Questions. Each correct answer will give you 5 points, each wrong answer will take 2 points! At the end of the quiz the Person with highest score wins!!",
+            cardDescription:"Presenting you 'The Office Trivia' where you will answer what exactly the Characters said in the picture!! The Game consists of 1 Round containing 10 Questions. Each correct answer will give you 5 points, each wrong answer will take 2 points! At the end of the quiz the Person with highest score wins!!",
             accentPrimary:'#f3722c',
             accentSecondary:'#880512'
         },

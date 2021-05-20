@@ -13,7 +13,7 @@ function Scoreboard(){
     return(
         <div className="scoreboard">
             <section className="scoreboard-section" style={{background:accentPrimary}}>
-                <div className="score" style={{borderRight:`0.2rem solid ${accentSecondary}`}}>
+                <div className="score">
                     <h1>Congratulations {scoreboardDisplay.playerName}, you finished the quiz!!</h1>
                     <h3>Your Score: {gameState.totalScore}</h3>
                 </div>

@@ -10,42 +10,59 @@ export default function Room({ accentPrimary, accentSecondary }: any) {
   const createRoomInputRef = useRef(null);
   const roomIdInputRef = useRef(null);
   const joinRoomInputRef = useRef(null);
+  const [controlRoom, setControlRoom] = useState({
+    create: false,
+    roomId: "",
+    join: false,
+  });
   const [roomSizeInput, setRoomSizeInput] = useState(null);
   const { setWaitingRoom, waitingRoom, socket, participants } =
     useMultiplayer();
 
   function createRoom(e) {
     e.preventDefault();
-    const roomId = uuidv4();
-    const participant = {
-      roomId,
-      username: createRoomInputRef.current.value,
-      roomSize: roomSizeInput,
-      userId: socket.id,
-      roomCreator: true,
-      totalScore: 0,
-      isAnswered: false,
-    };
-    console.log(roomSizeInput);
     if (createRoomInputRef.current.value && roomSizeInput) {
+      const roomId = uuidv4();
+      const participant = {
+        roomId,
+        username: createRoomInputRef.current.value,
+        roomSize: roomSizeInput,
+        userId: socket.id,
+        roomCreator: true,
+        totalScore: 0,
+        isAnswered: false,
+      };
+      console.log(roomSizeInput);
       socket.emit("create_room", participant);
-      setWaitingRoom({ ...waitingRoom, waiting: true });
+      socket.on("resource_created", (data) => {
+        if (data.status) {
+          setWaitingRoom({ ...waitingRoom, waiting: true });
+        } else {
+          setControlRoom({ ...controlRoom, create: true, roomId: data.roomId });
+        }
+      });
     }
   }
 
   function joinRoom(e) {
     e.preventDefault();
-    const participant = {
-      roomId: roomIdInputRef.current.value,
-      username: joinRoomInputRef.current.value,
-      userId: socket.id,
-      roomCreator: false,
-      totalScore: 0,
-      isAnswered: false,
-    };
     if (joinRoomInputRef.current.value && roomIdInputRef.current.value) {
+      const participant = {
+        roomId: roomIdInputRef.current.value,
+        username: joinRoomInputRef.current.value,
+        userId: socket.id,
+        roomCreator: false,
+        totalScore: 0,
+        isAnswered: false,
+      };
       socket.emit("join_room", participant);
-      setWaitingRoom({ ...waitingRoom, waiting: true });
+      socket.on("room_size_max", (data) => {
+        if (data.status) {
+          setWaitingRoom({ ...waitingRoom, waiting: true });
+        } else {
+          setControlRoom({ ...controlRoom, join: true });
+        }
+      });
     }
   }
 
@@ -95,6 +112,9 @@ export default function Room({ accentPrimary, accentSecondary }: any) {
             >
               Create Room
             </button>
+            {controlRoom.create && (
+              <small>The room is created already : {controlRoom.roomId}</small>
+            )}
           </form>
         </section>
         <section className="card card-right">
@@ -129,6 +149,7 @@ export default function Room({ accentPrimary, accentSecondary }: any) {
             >
               Join Room
             </button>
+            {controlRoom.join && <small>max size reached!</small>}
           </form>
         </section>
       </div>

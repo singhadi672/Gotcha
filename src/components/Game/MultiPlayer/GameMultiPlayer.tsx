@@ -22,7 +22,7 @@ export default function GameMultiPlayer() {
     <LeaderBoard
       accentSecondary={accentSecondary}
       accentPrimary={accentPrimary}
-    />
+      />
   ) : waitingRoom.multiplayerGameArea ? (
     <MultiplayGamePlay
       accentSecondary={accentSecondary}

@@ -9,7 +9,10 @@ export default function WaitingRoom({ accentPrimary, accentSecondary }: any) {
   });
 
   function enableMultiplayerGamePlay() {
-    socket.emit("start_multiplayer");
+    const creator = participants.find((user) => user.userId === socket.id);
+    if (creator.roomCreator) {
+      socket.emit("start_multiplayer");
+    }
   }
 
   return (

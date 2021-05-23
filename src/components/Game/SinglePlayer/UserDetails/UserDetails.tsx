@@ -52,7 +52,7 @@ function UserDetails({accentPrimary,accentSecondary,gameName}:UserDetailsProp){
                 required
                 maxLength={20}
               />
-              <button
+              <button className='details-button'
                 style={{ background: accentPrimary }}
                 onClick={(e) => {
                   startGamePlay(e);

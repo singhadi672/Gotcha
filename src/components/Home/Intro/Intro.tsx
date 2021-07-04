@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import './intro.css';
 import {IntroProp} from '../Home.type';
 

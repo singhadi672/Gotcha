@@ -1,4 +1,3 @@
-import React,{useState} from 'react';
 import Intro from './Intro/Intro';
 import HomeCards from './HomeCards/HomeCards';
 import { useHome } from '../../contexts/home-context';

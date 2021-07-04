@@ -1,40 +1,23 @@
-import React, { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import "../../SinglePlayer/PlayArea/playArea.css";
-import { useParams, useHistory } from "react-router-dom";
 import { multiplayerReducer } from "../../../../reducers/multiplayer-reducer";
-import { QuizData } from "../../../../data/quiz";
-import { Option, Question } from "../../../../data/quiz.type";
+import { Option, PlayAreaProp } from "../../../../types/quiz.type";
 import { useGame } from "../../../../contexts/game-context";
-import { PlayAreaProp } from "../../SinglePlayer/PlayArea/PlayArea";
 import { useMultiplayer } from "../../../../contexts/multiplayer-context";
 
-export type ACTION =
-  | { type: "CORRECT_ANSWER"; payload: { user: string; score: 5 } }
-  | { type: "WRONG_ANSWER"; payload: { user: string; score: 2 } }
-  | { type: "UPDATE_STATE"; payload: any }
-  | { type: "UPDATE_ISANSWERED_STATE"; payload: any };
 
 export default function MultiplayGamePlay({
   accentPrimary,
   accentSecondary,
 }: PlayAreaProp) {
-  const { id }: any = useParams();
-  const { participants, socket, leaderBoard, setLeaderBoard } =
-    useMultiplayer();
-  const { gameName, questions, gameType } = findQuizDataById();
-  const [currentQuestion, setCurrentQuestion] = useState<Question>(
-    questions[0]
-  );
+  const { participants, socket, setLeaderBoard } = useMultiplayer();
+  const { currentQuestion, setCurrentQuestion, quiz } = useGame();
   const [multiplayerState, multiplayerDispatch] = useReducer(
     multiplayerReducer,
     participants
   );
-  const [buttonEnable, setButtonEnable] = useState(true);
-  const [timer, setTimer] = useState(7);
-
-  function findQuizDataById() {
-    return QuizData.quiz.find((item) => item.gameId === parseInt(id));
-  }
+  const [buttonEnable, setButtonEnable] = useState<boolean>(true);
+  const [timer, setTimer] = useState<number>(7);
 
   const creator = participants.find((user) => user.userId === socket.id);
 
@@ -42,10 +25,11 @@ export default function MultiplayGamePlay({
     if (creator.roomCreator) {
       socket.emit("change_question");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   socket.on("change_current_question", (data) => {
-    setCurrentQuestion(questions[data.questionNum]);
+    setCurrentQuestion(quiz.questions[data.questionNum]);
     setButtonEnable(true);
   });
 
@@ -89,12 +73,12 @@ export default function MultiplayGamePlay({
   return (
     <div className="play-area">
       <h1 className="game-title" style={{ background: accentPrimary }}>
-        {gameName}
+        {quiz.quizDetail.themeName}
       </h1>
       <section className="game-play">
         <h3>0:0{timer}</h3>
         <div className="question">
-          {gameType === "question" ? (
+          {quiz.quizType === "question" ? (
             <h3>
               Q{currentQuestion.questionNum}: {currentQuestion.question}
             </h3>

@@ -1,36 +1,28 @@
 import { useGame } from "../../../../contexts/game-context";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./scoreboard.css";
-import { QuizData } from "../../../../data/quiz";
 import { useState } from "react";
 import Answers from "../Answers/Answers";
 
 function Scoreboard() {
-  let game: any = useLocation().state;
   const history = useHistory();
-  const { accentPrimary, accentSecondary, cardId } = game;
-  const [viewAnswer, setViewAnswer] = useState(false);
-  const { questions, gameType } = findQuizDataById();
-
-  function findQuizDataById() {
-    return QuizData.quiz.find((item) => item.gameId === parseInt(cardId));
-  }
+  const { quiz } = useGame();
+  const [viewAnswer, setViewAnswer] = useState<boolean>(false);
 
   const { scoreboardDisplay, gameState } = useGame();
   return (
     <div className="scoreboard">
       {viewAnswer ? (
         <Answers
-          questions={questions}
-          accentSecondary={accentSecondary}
+          questions={quiz.questions}
+          accentSecondary={quiz.quizDetail.themeAccentSecondary}
           setViewAnswer={setViewAnswer}
-          viewAnswer={viewAnswer}
-          gameType={gameType}
+          gameType={quiz.quizType}
         />
       ) : (
         <section
           className="scoreboard-section"
-          style={{ background: accentPrimary }}
+          style={{ background: quiz.quizDetail.themeAccentPrimary }}
         >
           <div className="score">
             <h1>
@@ -39,7 +31,7 @@ function Scoreboard() {
             </h1>
             <h3>Your Score: {gameState.totalScore}</h3>
             <button
-              style={{ background: accentSecondary }}
+              style={{ background: quiz.quizDetail.themeAccentSecondary }}
               onClick={() => setViewAnswer(true)}
             >
               view answers
@@ -47,14 +39,14 @@ function Scoreboard() {
           </div>
           <div className="other-options">
             <button
-              style={{ background: accentSecondary }}
-              onClick={() => history.push(`/${cardId}`)}
+              style={{ background: quiz.quizDetail.themeAccentSecondary }}
+              onClick={() => history.push(`/${quiz.quizDetail._id}`)}
             >
               Play Again!
             </button>
             <h2>OR</h2>
             <button
-              style={{ background: accentSecondary }}
+              style={{ background: quiz.quizDetail.themeAccentSecondary }}
               onClick={() => history.replace(`/`)}
             >
               Other Theme!

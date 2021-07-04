@@ -1,6 +1,6 @@
-import { ACTION } from "../components/Game/MultiPlayer/MultiplayerGamePlay/MultiplayerGamePlay";
+import { MULTI_PLAYER_ACTION } from "../types/quiz.type";
 
-export function multiplayerReducer(state:any,action:ACTION){
+export function multiplayerReducer(state:any,action:MULTI_PLAYER_ACTION){
     switch (action.type){
 
         case 'CORRECT_ANSWER':

@@ -1,7 +1,7 @@
 import "./waitingRoom.css";
 import { useMultiplayer } from "../../../../contexts/multiplayer-context";
 
-export default function WaitingRoom({ accentPrimary, accentSecondary }: any) {
+export default function WaitingRoom({ accentPrimary, accentSecondary }) {
   const { socket, participants, setParticipants } = useMultiplayer();
 
   socket.on("get_users", (data) => {

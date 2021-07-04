@@ -1,6 +1,4 @@
-import React, { useRef, useState } from "react";
-import { GameData } from "../../../../data/cardDetails";
-
+import { useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./room.css";
 
@@ -16,8 +14,7 @@ export default function Room({ accentPrimary, accentSecondary }: any) {
     join: false,
   });
   const [roomSizeInput, setRoomSizeInput] = useState(null);
-  const { setWaitingRoom, waitingRoom, socket, participants } =
-    useMultiplayer();
+  const { setWaitingRoom, waitingRoom, socket } = useMultiplayer();
 
   function createRoom(e) {
     e.preventDefault();
@@ -32,7 +29,6 @@ export default function Room({ accentPrimary, accentSecondary }: any) {
         totalScore: 0,
         isAnswered: false,
       };
-      console.log(roomSizeInput);
       socket.emit("create_room", participant);
       socket.on("resource_created", (data) => {
         if (data.status) {
@@ -153,7 +149,10 @@ export default function Room({ accentPrimary, accentSecondary }: any) {
           </form>
         </section>
       </div>
-      <button onClick={() => socket.emit("delete_room")} style={{background:'tomato',marginTop:'1rem'}}>
+      <button
+        onClick={() => socket.emit("delete_room")}
+        style={{ background: "tomato", marginTop: "1rem" }}
+      >
         Delete exsisting room
       </button>
     </div>

@@ -1,13 +1,11 @@
-import React from "react";
 import "./answers.css";
 
 export default function Answers({
   questions,
   accentSecondary,
   setViewAnswer,
-  gameType
-}: any) {
-  console.log(questions);
+  gameType,
+}) {
   return (
     <div className="answers">
       <h1 className="answers-heading">Answers</h1>

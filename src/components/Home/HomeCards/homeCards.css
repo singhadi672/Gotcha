@@ -39,6 +39,10 @@
 .game-card h2 {
   margin: 1rem;
   font-size: 2rem;
+  white-space: nowrap;
+  max-width: 20rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media screen and (max-width: 1213px) {

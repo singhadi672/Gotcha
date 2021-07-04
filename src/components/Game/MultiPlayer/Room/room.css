@@ -1,0 +1,124 @@
+.room-main {
+  width: 100%;
+  height: 100vh;
+  background: #fefae0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  flex-direction: column;
+}
+
+.room-card {
+  display: flex;
+  width: 60%;
+  height: 25rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 30px black;
+}
+
+.card {
+  width: 50%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-left {
+  border-right: 0.2rem solid #fefae0;
+}
+
+.card h1 {
+  font-size: 2rem;
+}
+
+.card form {
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-limit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form div {
+  width: 70%;
+}
+
+.room-length {
+  display: flex;
+  width: 30%;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 1rem;
+}
+
+input[type="text"] {
+  margin: 1rem;
+  width: 80%;
+  padding: 0.3rem;
+}
+
+button {
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1213px) {
+  .room-card {
+    width: 100%;
+    height: 90%;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .card {
+    width: 100%;
+    height: 40%;
+    border-right: none;
+  }
+
+  .card-left {
+    padding-bottom: 2rem;
+    border-bottom: 0.2rem solid #fefae0;
+  }
+
+  .card form {
+    height: 100%;
+    margin-top: 1rem;
+  }
+
+  .card h1 {
+    font-size: 1.8rem;
+  }
+
+  form div {
+    width: 100%;
+  }
+
+  form div h3 {
+    font-size: 0.9rem;
+  }
+
+  .room-length {
+    width: 70%;
+  }
+
+  input[type="text"] {
+    margin: 0.3rem;
+    width: 80%;
+    padding: 0.3rem;
+  }
+}
